@@ -25,7 +25,9 @@ export default {
       switch (true) {
         case pathname.endsWith("/chat/completions"):
           assert(request.method === "POST");
-          return handleCompletions(await request.json(), apiKey)
+					const json = await request.json()
+					console.log("request:",json)
+          return handleCompletions(json, apiKey)
             .catch(errHandler);
         case pathname.endsWith("/embeddings"):
           assert(request.method === "POST");
